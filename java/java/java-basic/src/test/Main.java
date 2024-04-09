@@ -2,23 +2,21 @@ package test;
 
 
 import java.io.*;
-import java.util.HashSet;
-import java.util.Set;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        Set<Integer> rest = new HashSet<>();
+        int T = Integer.parseInt(br.readLine());
+        StringBuilder sb = new StringBuilder();
 
 
-        for (int i = 0; i < 10; i++) {
-            int number = Integer.parseInt(br.readLine()) % 42;
-            rest.add(number);
+        for (int i = 0; i < T; i++) {
+            String str = br.readLine();
+            sb.append(str.charAt(0)).append(str.charAt(str.length() - 1)).append('\n');
         }
-
-        bw.write(String.valueOf(rest.size()));
+        System.out.println(sb.toString());
 
         bw.flush();
         bw.close();
