@@ -1,6 +1,5 @@
 package test;
 
-
 import java.io.*;
 
 public class Main {
@@ -8,15 +7,34 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        int T = Integer.parseInt(br.readLine());
-        StringBuilder sb = new StringBuilder();
+        String word = br.readLine();
+        int count = 0;
+        for (int i = 0; i < word.length(); i++) {
+            char currentChar = word.charAt(i);
 
-
-        for (int i = 0; i < T; i++) {
-            String str = br.readLine();
-            sb.append(str.charAt(0)).append(str.charAt(str.length() - 1)).append('\n');
+            if(currentChar == 'c' || currentChar == 's' || currentChar == 'z'){
+                if(i < word.length()-1 && (word.charAt(i+1) == '=' || word.charAt(i+1) == '-')){
+                    i++;
+                }
+            } else if (currentChar == 'd') {
+                if(i < word.length() - 2 && word.charAt(i + 1) == 'z' && word.charAt(i + 2) == '='){
+                    i += 2;
+                } else if (i < word.length() - 1 && word.charAt(i + 1) == '-') {
+                    i++;
+                }
+            } else if (currentChar == 'l') {
+                if (i < word.length() - 1 && word.charAt(i + 1) == 'j') {
+                    i++;
+                }
+            } else if (currentChar == 'n') {
+                if (i < word.length() - 1 && word.charAt(i + 1) == 'j') {
+                    i++;
+                }
+            }
+            count++;
         }
-        System.out.println(sb.toString());
+
+        bw.write(String.valueOf(count));
 
         bw.flush();
         bw.close();
